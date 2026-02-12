@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.mjs",
+    "start:prod": "PORT=8080 node server.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
