@@ -5,10 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b",
-    "preview": "vite preview",
-    "start": "node server.mjs",
-    "start:prod": "PORT=8080 node server.mjs"
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.3.1",

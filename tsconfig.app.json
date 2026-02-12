@@ -14,13 +14,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "paths": {
-      "react": ["src/lib/react"],
-      "react/jsx-runtime": ["src/lib/jsx-runtime"],
-      "react-dom/client": ["src/lib/react-dom-client"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
