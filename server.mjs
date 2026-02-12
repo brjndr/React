@@ -7,12 +7,13 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = __dirname
 const port = Number(process.env.PORT || 4173)
-const host = process.env.HOST || '127.0.0.1'
 
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8',
+  '.ts': 'text/plain; charset=utf-8',
+  '.tsx': 'text/plain; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
@@ -47,11 +48,13 @@ const server = http.createServer(async (req, res) => {
       res.setHeader('Content-Type', mimeTypes[ext] || 'application/octet-stream')
       res.writeHead(200)
       res.end(data)
+      return
     } catch {
       const fallback = await readFile(path.resolve(rootDir, 'index.html'))
       res.setHeader('Content-Type', 'text/html; charset=utf-8')
       res.writeHead(200)
       res.end(fallback)
+      return
     }
   } catch {
     res.writeHead(500)
@@ -59,10 +62,6 @@ const server = http.createServer(async (req, res) => {
   }
 })
 
-server.listen(port, host, () => {
-  const prettyHost = host === '0.0.0.0' ? 'localhost' : host
-  console.log(`Server running at http://${prettyHost}:${port}`)
-  if (host === '0.0.0.0') {
-    console.log(`Tip: open http://localhost:${port} in your browser (not http://0.0.0.0:${port}).`)
-  }
+server.listen(port, '0.0.0.0', () => {
+  console.log(`Server running at http://0.0.0.0:${port}`)
 })

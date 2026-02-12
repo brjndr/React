@@ -1,9 +1,6 @@
-export default {
-  resolve: {
-    alias: {
-      react: '/src/lib/react.ts',
-      'react/jsx-runtime': '/src/lib/jsx-runtime.ts',
-      'react-dom/client': '/src/lib/react-dom-client.ts',
-    },
-  },
-}
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+})
